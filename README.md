@@ -23,6 +23,55 @@ FindIt AI is a modern web application designed to revolutionize the way people r
 - **⚡ Real-Time Data**: Built on Firebase to ensure that the moment an item is reported, it is instantly searchable and visible to the community.
 - **🎨 Premium UI/UX**: A highly responsive, accessible, and beautiful interface featuring modern design principles, dynamic animations, and dark mode support.
 
+## 🏗️ System Architecture
+
+```mermaid
+graph TD
+    %% Frontend
+    subgraph Frontend [React.js Client]
+        UI[User Interface / Pages]
+        Chat[AI Chat Assistant]
+        Matching[Smart Match Engine]
+        UI --> Chat
+        UI --> Matching
+    end
+
+    %% External APIs (AI)
+    subgraph AI_Services [AI Processing Models]
+        Groq[Groq API <br/> Llama 3]
+        Gemini[Google Gemini <br/> Multi-modal]
+        HF[Hugging Face <br/> Vision/NLP]
+    end
+
+    %% Backend
+    subgraph Backend [Firebase Backend]
+        Auth[Firebase Auth]
+        Firestore[(Firestore DB)]
+        Storage[Firebase Storage]
+    end
+
+    %% Connections
+    Matching -->|Image & Description Data| AI_Services
+    Chat <-->|Context & Queries| Groq
+    AI_Services -->|Generated Tags & Matches| Matching
+    
+    UI -->|User Login| Auth
+    UI -->|Save/Fetch Reports| Firestore
+    UI -->|Upload Images| Storage
+```
+
+## 📸 Output Screenshots
+
+*(Note to developer: Replace the placeholder image links below with the actual paths to your screenshots, e.g., `./public/screenshot1.png`)*
+
+| Home Page | Report an Item |
+| :---: | :---: |
+| <img src="https://via.placeholder.com/400x250.png?text=Home+Page+Screenshot" alt="Home Page" width="400"/> | <img src="https://via.placeholder.com/400x250.png?text=Report+Item+Screenshot" alt="Report Item" width="400"/> |
+
+| AI Smart Matching Results | AI Chat Assistant |
+| :---: | :---: |
+| <img src="https://via.placeholder.com/400x250.png?text=Smart+Matching+Screenshot" alt="Smart Matching" width="400"/> | <img src="https://via.placeholder.com/400x250.png?text=AI+Chat+Screenshot" alt="Chat Assistant" width="400"/> |
+
 ## 🛠️ Tech Stack
 
 **Frontend Framework & Styling:**
